@@ -1,0 +1,10 @@
+processed_lsd/
+processed_lsd_jpgs/
+processed_osf/
+processed_osf_jpgs/
+processed_spider/
+processed_spider_jpgs/
+processed_tseg/
+processed_tseg_jpgs/
+test_images/
+train_images/
