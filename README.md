@@ -1,8 +1,8 @@
-# Descripción del Proyecto
+## Introducción
 
-Este proyecto esta basado en una competicion realizada por kaggle tiene como objetivo identificar las condiciones médicas que afectan la columna lumbar en las resonancias magnéticas utilizando técnicas de aprendizaje automático. El objetivo final es clasificar las imágenes médicas en función de la severidad de las afecciones observadas en los estudios de resonancia magnética.
+Este repositorio contiene el código y los datos necesarios para participar en la competencia de Kaggle "RSNA 2024 Lumbar Spine Degenerative Classification". El objetivo de esta competencia es desarrollar modelos de aprendizaje automático que puedan identificar y clasificar condiciones médicas que afectan la columna lumbar en imágenes de resonancia magnética.
 
-https://www.kaggle.com/competitions/rsna-2024-lumbar-spine-degenerative-classification
+Este proyecto está basado en una competencia realizada por Kaggle y tiene como objetivo identificar las condiciones médicas que afectan la columna lumbar en las resonancias magnéticas utilizando técnicas de aprendizaje automático. El objetivo final es clasificar las imágenes médicas en función de la severidad de las afecciones observadas en los estudios de resonancia magnética.
 
 ## Descripción del Conjunto de Datos
 
@@ -21,7 +21,7 @@ Cada condición se clasifica en cuatro niveles de severidad:
 
 El conjunto de datos también incluye coordenadas que indican la ubicación de las áreas de interés dentro de las imágenes 3D de resonancia magnética.
 
-## Archivos
+## Descripción de los Archivos del Repositorio
 
 A continuación se describen los archivos más relevantes para el proyecto:
 
@@ -48,26 +48,15 @@ A continuación se describen los archivos más relevantes para el proyecto:
    - `series_id`: ID de la serie de imágenes.
    - `series_description`: Descripción de la orientación del escaneo.
 
-## Proceso de Evaluación
+## Proceso de Entrenamiento
 
-La competencia utiliza un conjunto de prueba oculto, lo que significa que los datos reales de prueba solo estarán disponibles durante la evaluación final. El archivo de envío debe seguir el formato especificado en `sample_submission.csv`.
+El proceso de entrenamiento incluye varias etapas clave:
 
-## Estructura del Proyecto
+1. **Preprocesamiento de Datos**: Las imágenes DICOM se cargan y se organizan, y las coordenadas de las áreas de interés se extraen y se preparan para el entrenamiento del modelo.
+2. **Entrenamiento del Modelo**: Se utiliza un modelo de aprendizaje profundo para detectar y clasificar las condiciones lumbares en las imágenes. El entrenamiento incluye la optimización y evaluación del modelo.
+3. **Evaluación y Predicción**: El modelo entrenado se evalúa utilizando un conjunto de datos de validación, y se generan predicciones para el conjunto de prueba.
 
-- **src/**: Código fuente del proyecto, que incluye scripts para el preprocesamiento de datos, entrenamiento y evaluación del modelo.
-- **data/**: Carpeta que contiene los conjuntos de datos (imágenes y etiquetas).
-- **notebooks/**: Bloc de notas Jupyter con el análisis y desarrollo del modelo
-- **models/**: Contiene los modelos entrenados
-
-## Instrucciones para Ejecutar
-
-1. Clonar el repositorio.
-2. Instalar las dependencias listadas en el archivo `requirements.txt`.
-3. Ejecutar los notebooks o scripts para entrenar los modelos y realizar predicciones.
-
-## Descripción del Archivo `Detection.py`
-
-El archivo `Detection.py` contiene clases y funciones claves para el procesamiento de imágenes DICOM y la detección de condiciones médicas en la columna lumbar. Este archivo es responsable de realizar tareas como cargar y manipular imágenes, realizar predicciones y visualizar resultados. A continuación, se describen las funciones más importantes:
+## Cómo Llamar las Funciones
 
 ### Funciones Principales:
 
@@ -129,3 +118,30 @@ La carpeta `data`, que contiene los archivos CSV y las imágenes de entrenamient
  https://www.kaggle.com/datasets/brendanartley/lumbar-coordinate-pretraining-dataset
 
  https://www.kaggle.com/datasets/brendanartley/lumbar-coordinate-pretraining-dataset?select=data
+
+## Estructura de las Carpetas del Repositorio
+
+A continuación se muestra la estructura de las carpetas del repositorio:
+
+```
+Lumbar/
+├── data/
+│   ├── train.csv
+│   ├── train_label_coordinates.csv
+│   ├── sample_submission.csv
+│   ├── train_images/
+│   │   └── [study_id]/
+│   │       └── [series_id]/
+│   │           └── [instance_number].dcm
+│   ├── test_images/
+│   │   └── [study_id]/
+│   │       └── [series_id]/
+│   │           └── [instance_number].dcm
+│   ├── train_series_descriptions.csv
+│   └── test_series_descriptions.csv
+├── src/
+│   ├── Detection.py
+│   └── data/
+│       └── __init__.py
+└── README.md
+```
